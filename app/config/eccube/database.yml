@@ -1,0 +1,9 @@
+database:
+    driver: 'pdo_mysql'
+    host: 'mysql202.phy.lolipop.lan'
+    dbname: 'LAA0180066-eccube'
+    port: ''
+    user: 'LAA0180066'
+    password : 'FSHcrnsb53GW'
+    charset: utf8
+    defaultTableOptions: { collate: utf8_general_ci }

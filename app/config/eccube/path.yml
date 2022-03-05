@@ -1,0 +1,55 @@
+# duplicated
+root: /hotpot/html/ # root_urlpath
+admin_dir: hotpot/ # admin_route
+tpl: /hotpot/html/user_data/packages/default/ # front_urlpath
+admin_tpl: /hotpot/html/user_data/packages/admin/ # admin_urlpath
+image_path: /hotpot/html/upload/save_image/ # image_save_urlpath
+
+# base valiables
+root_dir: /home/users/0/main.jp-bb-qtarou/web/hotpot
+root_urlpath: /hotpot/html
+template_code: default
+
+# routing
+admin_route: hotpot
+user_data_route: user_data
+
+# public directory
+public_path: /html
+public_path_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html
+
+# realdir::image
+image_save_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html/upload/save_image
+image_temp_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html/upload/temp_image
+
+# realdir::user_data
+user_data_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html/user_data
+
+# realdir::block
+block_default_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/src/Eccube/Resource/template/default/Block
+block_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/app/template/default/Block
+
+# realdir::template
+template_default_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/src/Eccube/Resource/template/default
+template_default_html_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html/template/default
+template_admin_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/src/Eccube/Resource/template/admin
+template_admin_html_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html/template/admin
+template_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/app/template/default
+template_html_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html/template/default
+template_temp_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/app/cache/eccube/template
+
+# realdir::csv
+csv_temp_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/app/cache/eccube/csv
+
+# realdir:plugin
+plugin_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/app/Plugin
+plugin_temp_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/app/cache/plugin
+plugin_html_realdir: /home/users/0/main.jp-bb-qtarou/web/hotpot/html/plugin
+
+# urlpath
+admin_urlpath: /hotpot/html/template/admin
+front_urlpath: /hotpot/html/template/default
+image_save_urlpath: /hotpot/html/upload/save_image
+image_temp_urlpath: /hotpot/html/upload/temp_image
+user_data_urlpath: /hotpot/html/user_data
+plugin_urlpath: /hotpot/html/plugin

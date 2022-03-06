@@ -1,0 +1,51 @@
+DirectoryIndex index.php index.html .ht
+
+<FilesMatch "^composer|^autoload|^cli-config|^COPYING|\.(ini|lock|dist|git|sh|bak|swp)$">
+    order allow,deny
+    deny from all
+</FilesMatch>
+
+<Files ~ "index.php|index_dev.php">
+    order deny,allow
+    allow from all
+</Files>
+
+<IfModule mod_headers.c>
+    # クリックジャッキング対策
+    Header always set X-Frame-Options SAMEORIGIN
+
+    # XSS対策
+    Header set X-XSS-Protection "1; mode=block"
+    Header set X-Content-Type-Options nosniff
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Authorization ヘッダが取得できない環境への対応
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
+
+    # さくらのレンタルサーバでサイトへのアクセスをSSL経由に制限する場合の対応
+    # RewriteCond %{HTTP:x-sakura-forwarded-for} !^$
+    # RewriteRule ^(.*) - [E=HTTPS:on]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !^(.*)\.(gif|png|jpe?g|css|ico|js|svg)$ [NC]
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# 管理画面へのBasic認証サンプル
+#
+# Satisfy Any
+#
+# AuthType Basic
+# AuthName "Please enter username and password"
+# AuthUserFile /path/to/.htpasswd
+# AuthGroupFile /dev/null
+# require valid-user
+#
+# SetEnvIf Request_URI "^/admin" admin_path  # ^/adminは, 管理画面URLに応じて変更してください
+# Order Allow,Deny
+# Allow from all
+# Deny from env=admin_path

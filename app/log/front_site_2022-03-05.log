@@ -1,5 +1,0 @@
-[2022-03-05 13:35:05,258435] front.INFO  [NULL] [8acce5fa] [NULL] [LogListener:onKernelRequestEarly:47] - INIT   [GET, /hotpot/html/, 3.112.70.157, NULL, Chatwork LinkPreview v1]
-[2022-03-05 13:35:05,264201] front.INFO  [NULL] [8acce5fa] [NULL] [LogListener:onKernelRequest:60] - PROCESS START ["homepage"]  [GET, /hotpot/html/, 3.112.70.157, NULL, Chatwork LinkPreview v1]
-[2022-03-05 13:35:05,349899] front.INFO  [6ef6409f] [8acce5fa] [NULL] [LogListener:onKernelController:73] - LOGIC START ["homepage"]  [GET, /hotpot/html/, 3.112.70.157, NULL, Chatwork LinkPreview v1]
-[2022-03-05 13:35:05,519938] front.INFO  [6ef6409f] [8acce5fa] [NULL] [LogListener:onKernelResponse:86] - LOGIC END ["homepage"]  [GET, /hotpot/html/, 3.112.70.157, NULL, Chatwork LinkPreview v1]
-[2022-03-05 13:35:05,521187] front.INFO  [6ef6409f] [8acce5fa] [NULL] [LogListener:onKernelTerminate:95] - PROCESS END ["homepage"]  [GET, /hotpot/html/, 3.112.70.157, NULL, Chatwork LinkPreview v1]

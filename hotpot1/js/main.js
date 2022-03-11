@@ -12,7 +12,14 @@ $('.recommendslider').slick({
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: true,
-    infinite: false
+    infinite: false,
+    responsive: [{
+        breakpoint: 500,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+        },
+    }, ],
 });
 $(".top").click(function() {
     $("body,html").animate({

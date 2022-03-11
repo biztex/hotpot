@@ -1,8 +1,22 @@
 $medium-width: 768px;
 $small-width: 500px;
 $break-point: 1500px;
+$width: 1400px;
+$mdwidth: 950px;
 @mixin media-screen($break-point) {
     @media screen and (max-width: $break-point) {
+        @content;
+    }
+}
+
+@mixin media-screen($width) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}
+
+@mixin media-screen($mdwidth) {
+    @media screen and (max-width: $mdwidth) {
         @content;
     }
 }

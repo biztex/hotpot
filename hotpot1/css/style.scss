@@ -206,12 +206,23 @@ header {
         margin-right: 0;
         .logo {
             margin-left: 40px;
+            @include media-screen($mdwidth) {
+                width: 180px;
+                margin-left: 0;
+            }
         }
         .header__right {
+            @include media-screen($break-point) {
+                display: flex;
+                align-items: center;
+            }
             .topheader {
                 display: flex;
                 align-items: center;
                 justify-content: end;
+                @include media-screen($break-point) {
+                    margin-right: 40px;
+                }
                 .tag {
                     margin: 0 24px;
                 }
@@ -226,6 +237,9 @@ header {
                         line-height: 0;
                         margin-right: 5px;
                     }
+                    @include media-screen($small-width) {
+                        display: none;
+                    }
                 }
                 .login {
                     display: flex;
@@ -238,9 +252,15 @@ header {
                         line-height: 0;
                         margin-right: 5px;
                     }
+                    @include media-screen($small-width) {
+                        display: none;
+                    }
                 }
                 .search {
                     position: relative;
+                    @include media-screen($mdwidth) {
+                        display: none;
+                    }
                     input {
                         background: rgba($color: #535353, $alpha: 0.8);
                         outline: none;
@@ -261,6 +281,9 @@ header {
                     }
                 }
                 .phone {
+                    @include media-screen($width) {
+                        display: none;
+                    }
                     a {
                         display: flex;
                         align-items: center;
@@ -281,6 +304,11 @@ header {
                                 letter-spacing: 1px;
                             }
                         }
+                    }
+                }
+                .cart {
+                    @include media-screen($width) {
+                        display: none;
                     }
                 }
             }
@@ -346,6 +374,7 @@ header {
         .menu-trigger.active span:nth-of-type(1) {
             -webkit-transform: translateY(9px) rotate(-45deg);
             transform: translateY(9px) rotate(-45deg);
+            background: #333;
         }
         .menu-trigger.active span:nth-of-type(2) {
             opacity: 0;
@@ -353,6 +382,7 @@ header {
         .menu-trigger.active span:nth-of-type(3) {
             -webkit-transform: translateY(-9px) rotate(45deg);
             transform: translateY(-9px) rotate(45deg);
+            background: #333;
         }
     }
     .g-nav {
@@ -362,7 +392,7 @@ header {
         right: 0;
         transition: 0.3s;
         transform: translateX(100%);
-        background: #fff;
+        background: #333;
         width: 100%;
         height: 100%;
         z-index: 1;
@@ -383,8 +413,8 @@ header {
         width: 228px;
         text-align: center;
         text-decoration: none;
-        padding: 10px 0;
         font-weight: bold;
+        color: #fff;
     }
     .g-nav .list li.contact_btn a {
         border: 3px solid #FF830E;
@@ -406,11 +436,17 @@ header {
     display: block;
     position: relative;
     padding-bottom: 50px;
+    @include media-screen($small-width) {
+        padding-bottom: 0;
+    }
     .slider {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
         padding-top: 300px;
+        @include media-screen($medium-width) {
+            padding-top: 150px;
+        }
         position: relative;
         .slide {
             img {
@@ -472,13 +508,19 @@ header {
             left: 0;
             background: url("../img/left.png") 0 0 / 100% no-repeat;
             background-size: contain;
-            left: -120px;
+            left: -10%;
+            @include media-screen($width) {
+                width: 1.8vw;
+            }
         }
         .slick-arrow.slick-next {
             right: 0;
             background: url("../img/right.png") 0 0 / 100% no-repeat;
             background-size: contain;
-            right: -120px;
+            right: -10%;
+            @include media-screen($width) {
+                width: 1.8vw;
+            }
         }
     }
     .mv {
@@ -486,22 +528,44 @@ header {
         top: 250px;
         right: 20%;
         z-index: 100;
+        @include media-screen($width) {
+            width: 10vw;
+        }
+        @include media-screen($small-width) {
+            top: 80px;
+            width: 12vw;
+        }
     }
     .stamp {
         position: absolute;
         bottom: 20%;
         left: 11%;
+        @include media-screen($width) {
+            width: 6vw;
+            bottom: auto;
+            top: 46%;
+        }
+        @include media-screen($small-width) {
+            width: 9vw;
+        }
     }
     .news {
         display: flex;
         justify-content: start;
         align-items: baseline;
-        width: 65%;
+        max-width: 1280px;
+        width: 80%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 3%;
         padding-bottom: 50px;
         border-bottom: 1px dotted white;
+        @include media-screen($small-width) {
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 10%;
+            padding-bottom: 10px;
+        }
         .title {
             p {
                 color: white;
@@ -511,6 +575,12 @@ header {
                 display: flex;
                 align-items: center;
                 line-height: 1;
+                @include media-screen($width) {
+                    font-size: calc( 21 / 1400 * 100vw);
+                }
+                @include media-screen($small-width) {
+                    font-size: calc( 18 / 500 * 100vw);
+                }
                 &::after {
                     content: '';
                     background: rgba($color: #ffffff, $alpha: 0.4);
@@ -519,33 +589,63 @@ header {
                     position: relative;
                     display: block;
                     margin-left: 50px;
+                    @include media-screen($width) {
+                        width: calc( 80 / 1400 * 100vw);
+                        margin-left: calc( 50 / 1400 * 100vw);
+                    }
                 }
             }
             &_two {
                 font-size: 11px;
                 letter-spacing: 5px;
+                @include media-screen($width) {
+                    font-size: calc( 11 / 1400 * 100vw);
+                    letter-spacing: calc( 5 / 1400 * 100vw);
+                }
+                @include media-screen($small-width) {
+                    font-size: calc( 11 / 500 * 100vw);
+                }
             }
         }
         .news-content {
             margin-left: 100px;
+            @include media-screen($small-width) {
+                margin-left: 0;
+                margin-top: 20px;
+            }
             .content {
                 display: flex;
                 align-items: center;
+                @include media-screen($small-width) {
+                    align-items: baseline;
+                }
                 .date {
                     font-size: 14px;
                     color: white;
                     margin-top: 0px;
                     padding: 0;
                     margin-bottom: 10px;
+                    @include media-screen($width) {
+                        font-size: calc( 14 / 1400 * 100vw);
+                    }
+                    @include media-screen($small-width) {
+                        font-size: calc( 12 / 500 * 100vw);
+                    }
                 }
                 .news-title {
                     font-size: 14px;
                     color: white;
                     margin-left: 50px;
-                    margin-left: 50px;
                     margin-top: 0px;
                     padding: 0;
                     margin-bottom: 10px;
+                    @include media-screen($width) {
+                        font-size: calc( 14 / 1400 * 100vw);
+                    }
+                    @include media-screen($small-width) {
+                        font-size: calc( 12 / 500 * 100vw);
+                        margin-left: 20px;
+                    }
                 }
             }
         }
@@ -612,13 +712,35 @@ header {
         flex-wrap: wrap;
         list-style: none;
         max-width: 1280px;
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
         margin-top: 50px;
         li {
             width: 200px;
+            margin: 30px 20px;
+            @include media-screen($width) {
+                width: calc( 200/1400 * 100vw);
+                margin: calc( 30/1400 * 100vw) calc( 20/1400 * 100vw);
+                ;
+            }
+            @include media-screen($mdwidth) {
+                width: calc( 300/1400 * 100vw);
+            }
+            @include media-screen($small-width) {
+                flex: 1 0 calc( 900/1400 * 100vw);
+            }
+            &:empty {
+                height: 0;
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
             figure {
                 margin: 0;
+                img {
+                    width: 100%;
+                }
                 h3 {
                     font-size: 21px;
                     color: white;
@@ -626,19 +748,27 @@ header {
                     align-items: center;
                     img {
                         margin-right: 10px;
+                        width: auto;
                     }
                 }
             }
             figcaption {
+                margin-top: 10px;
                 p {
                     color: white;
                 }
                 .foodname {
                     font-size: 13px;
                     min-height: 60px;
+                    @include media-screen($small-width) {
+                        font-size: 18px;
+                    }
                 }
                 .foodcost {
                     font-size: 13px;
+                    @include media-screen($small-width) {
+                        font-size: 18px;
+                    }
                 }
                 .cart {
                     margin-top: 10px;
@@ -651,9 +781,16 @@ header {
                         align-items: center;
                         width: 110px;
                         margin-left: auto;
+                        @include media-screen($small-width) {
+                            font-size: 15px;
+                            width: 120px;
+                        }
                         img {
                             width: 13px;
                             margin-right: 5px;
+                            @include media-screen($small-width) {
+                                width: 15px;
+                            }
                         }
                     }
                 }
@@ -696,6 +833,9 @@ header {
         }
         .recommendslider {
             margin-top: 3%;
+            @include media-screen($medium-width) {
+                margin-top: 10%;
+            }
             .slick-list {
                 margin-left: -10px;
             }
@@ -718,6 +858,9 @@ header {
                 box-shadow: none;
                 border: none;
                 cursor: pointer;
+                @include media-screen($small-width) {
+                    display: none !important;
+                }
             }
             .slick-arrow,
             .slick-arrow:focus,
@@ -731,8 +874,8 @@ header {
                 left: 18%;
                 background-size: contain;
                 background: rgba($color: #424242, $alpha: 0.4);
-                width: 50px;
-                height: 50px;
+                width: calc( 50 / 1920 * 100vw);
+                height: calc(50 / 1920 * 100vw);
                 &::before {
                     content: '\f104';
                     display: block;
@@ -744,8 +887,8 @@ header {
                 left: 21%;
                 background-size: contain;
                 background: rgba($color: #424242, $alpha: 0.4);
-                width: 50px;
-                height: 50px;
+                width: calc( 50 / 1920 * 100vw);
+                height: calc(50 / 1920 * 100vw);
                 &::before {
                     content: '\f105';
                     display: block;
@@ -774,6 +917,9 @@ header {
     background: url('../img/cateback.png');
     background-size: 100%;
     padding-bottom: 100px;
+    @include media-screen($small-width) {
+        padding-bottom: 20px;
+    }
     h2 {
         padding: 5% 0 0;
         margin: 0;
@@ -814,16 +960,26 @@ header {
         li {
             margin: 30px 20px;
             width: 200px;
-            figure {
+            @include media-screen($width) {
+                width: calc( 200 / 1400 * 100vw);
+                margin: calc( 30 / 1400 * 100vw) calc( 20 / 1400 * 100vw);
+            }
+            @include media-screen($mdwidth) {
+                flex: 1 0 calc( 250 / 1400 * 100vw);
+            }
+            @include media-screen($small-width) {
+                flex: 1 0 calc( 900 / 1400 * 100vw);
+                margin: 30px 0;
+            }
+            &:empty {
+                height: 0;
+                border: none;
                 margin: 0;
-                h3 {
-                    font-size: 21px;
-                    color: white;
-                    display: flex;
-                    align-items: center;
-                    img {
-                        margin-right: 10px;
-                    }
+                padding: 0;
+            }
+            figure {
+                img {
+                    width: 100%;
                 }
             }
             figcaption {
@@ -836,6 +992,14 @@ header {
                     p {
                         font-size: 13px;
                         margin-right: 10px;
+                        @include media-screen($width) {
+                            font-size: calc( 13 / 1400 * 100vw);
+                            margin-right: calc( 10 / 1400 * 100vw);
+                        }
+                        @include media-screen($small-width) {
+                            font-size: calc( 50 / 1400 * 100vw);
+                            margin-right: calc( 20 / 1400 * 100vw);
+                        }
                     }
                     .new-tag {
                         background-color: #68ada3;
@@ -853,9 +1017,15 @@ header {
                 .foodname {
                     font-size: 13px;
                     min-height: 60px;
+                    @include media-screen($small-width) {
+                        font-size: 18px;
+                    }
                 }
                 .foodcost {
                     font-size: 13px;
+                    @include media-screen($small-width) {
+                        font-size: 18px;
+                    }
                 }
                 .cart {
                     margin-top: 10px;
@@ -868,9 +1038,16 @@ header {
                         align-items: center;
                         width: 110px;
                         margin-left: auto;
+                        @include media-screen($small-width) {
+                            font-size: 15px;
+                            width: 120px;
+                        }
                         img {
                             width: 13px;
                             margin-right: 5px;
+                            @include media-screen($small-width) {
+                                width: 15px;
+                            }
                         }
                     }
                 }
@@ -881,7 +1058,7 @@ header {
 
 .category {
     background: url(../img/categoryback.png);
-    background-size: 100%;
+    background-size: cover;
     padding-bottom: 3%;
     .productcategory {
         padding-top: 5%;
@@ -915,6 +1092,7 @@ header {
             flex-wrap: wrap;
             list-style: none;
             max-width: 1280px;
+            width: 90%;
             padding: 0;
             margin-left: auto;
             margin-right: auto;
@@ -923,6 +1101,14 @@ header {
             li {
                 width: 375px;
                 position: relative;
+                @include media-screen($width) {
+                    width: calc( 375 / 1400 * 100vw);
+                }
+                @include media-screen($width) {
+                    flex: 1 0 calc( 900 / 1400 * 100vw);
+                    margin-top: 20px;
+                    margin-bottom: 50px;
+                }
                 h3 {
                     position: absolute;
                     top: -20px;
@@ -932,6 +1118,7 @@ header {
                     writing-mode: vertical-rl;
                     font-size: 17px;
                     padding: 15px 3px;
+                    z-index: 10;
                     img {
                         margin-bottom: 10px;
                     }
@@ -945,6 +1132,7 @@ header {
                 p {
                     color: white;
                     font-size: 15px;
+                    margin: 10px 0
                 }
             }
         }
@@ -960,8 +1148,10 @@ header {
             list-style: none;
             justify-content: center;
             padding: 20px 0;
+            flex-flow: row wrap;
             margin: 0;
             li {
+                margin: 10px 0;
                 a {
                     color: white;
                     margin: 30px;

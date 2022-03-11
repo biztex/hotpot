@@ -4,6 +4,8 @@
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 
+/app/config/eccube/*
+
 # Email spool folder
 /app/spool/*
 

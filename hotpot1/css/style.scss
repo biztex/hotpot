@@ -1,3 +1,4 @@
+@import "./_basic.scss";
 * {
     box-sizing: border-box;
     padding: 0;
@@ -287,6 +288,9 @@ header {
                 background: rgba($color: #333333, $alpha: 0.6);
                 padding: 20px 100px 20px 80px;
                 margin-top: 20px;
+                @include media-screen($break-point) {
+                    display: none;
+                }
                 a {
                     &::before {
                         content: url('../img/arrow.png');
@@ -496,6 +500,8 @@ header {
         margin-left: auto;
         margin-right: auto;
         margin-top: 3%;
+        padding-bottom: 50px;
+        border-bottom: 1px dotted white;
         .title {
             p {
                 color: white;
@@ -573,7 +579,7 @@ header {
     width: 100%;
     background: url(../img/back1.png);
     background-size: 100%;
-    padding-bottom: 5%;
+    padding-bottom: 3%;
     h2 {
         padding: 5% 0 0;
         margin: 0;
@@ -608,6 +614,7 @@ header {
         max-width: 1280px;
         margin-left: auto;
         margin-right: auto;
+        margin-top: 50px;
         li {
             width: 200px;
             figure {
@@ -658,21 +665,125 @@ header {
 .recommend-section {
     background: url("../img/back_re.png");
     background-size: 100%;
+    .recommend {
+        padding-top: 4%;
+        position: relative;
+        width: 100%;
+        background: transparent;
+        h2 {
+            margin: 0;
+            color: white;
+            text-align: center;
+            letter-spacing: 10px;
+            .eng {
+                font-size: 11px;
+                letter-spacing: 6px;
+            }
+            .under {
+                position: relative;
+                &::after {
+                    content: '';
+                    display: block;
+                    background: white;
+                    height: 2px;
+                    position: absolute;
+                    bottom: -10px;
+                    width: 30px;
+                    left: 35%;
+                    transform: translateX(-50%);
+                }
+            }
+        }
+        .recommendslider {
+            margin-top: 3%;
+            .slick-list {
+                margin-left: -10px;
+            }
+            .slick-slide {
+                margin-left: 10px;
+                img {
+                    width: 100%;
+                }
+            }
+            .slick-arrow {
+                position: absolute;
+                bottom: -20%;
+                margin: -20px 0px 0px 0px;
+                z-index: 999;
+                font-size: 0;
+                width: 20px;
+                height: 20px;
+                background: transparent;
+                outline: none;
+                box-shadow: none;
+                border: none;
+                cursor: pointer;
+            }
+            .slick-arrow,
+            .slick-arrow:focus,
+            .slick-arrow:active {
+                border: none;
+                background: none;
+                outline: none;
+                padding: 0;
+            }
+            .slick-arrow.slick-prev {
+                left: 18%;
+                background-size: contain;
+                background: rgba($color: #424242, $alpha: 0.4);
+                width: 50px;
+                height: 50px;
+                &::before {
+                    content: '\f104';
+                    display: block;
+                    font: normal normal normal 21px/1 Fontawesome;
+                    color: white;
+                }
+            }
+            .slick-arrow.slick-next {
+                left: 21%;
+                background-size: contain;
+                background: rgba($color: #424242, $alpha: 0.4);
+                width: 50px;
+                height: 50px;
+                &::before {
+                    content: '\f105';
+                    display: block;
+                    font: normal normal normal 21px/1 Fontawesome;
+                    color: white;
+                }
+            }
+        }
+        .more {
+            color: white;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            width: 150px;
+            position: absolute;
+            bottom: 5%;
+            right: 15%;
+            img {
+                margin-right: 10px;
+            }
+        }
+    }
 }
 
-.recommend {
-    padding-top: 4%;
-    position: relative;
-    width: 100%;
-    background: transparent;
+.mainlist {
+    background: url('../img/cateback.png');
+    background-size: 100%;
+    padding-bottom: 100px;
     h2 {
+        padding: 5% 0 0;
         margin: 0;
         color: white;
         text-align: center;
         letter-spacing: 10px;
+        font-size: 32px;
         .eng {
             font-size: 11px;
-            letter-spacing: 6px;
+            letter-spacing: 10px;
         }
         .under {
             position: relative;
@@ -684,88 +795,92 @@ header {
                 position: absolute;
                 bottom: -10px;
                 width: 30px;
-                left: 35%;
+                left: 55%;
                 transform: translateX(-50%);
             }
         }
     }
-    .recommendslider {
-        margin-top: 3%;
-        .slick-list {
-            margin-left: -10px;
-        }
-        .slick-slide {
-            margin-left: 10px;
-            img {
-                width: 100%;
-            }
-        }
-        .slick-arrow {
-            position: absolute;
-            bottom: -20%;
-            margin: -20px 0px 0px 0px;
-            z-index: 999;
-            font-size: 0;
-            width: 20px;
-            height: 20px;
-            background: transparent;
-            outline: none;
-            box-shadow: none;
-            border: none;
-            cursor: pointer;
-        }
-        .slick-arrow,
-        .slick-arrow:focus,
-        .slick-arrow:active {
-            border: none;
-            background: none;
-            outline: none;
-            padding: 0;
-        }
-        .slick-arrow.slick-prev {
-            left: 18%;
-            background-size: contain;
-            background: rgba($color: #424242, $alpha: 0.4);
-            width: 50px;
-            height: 50px;
-            &::before {
-                content: '\f104';
-                display: block;
-                font: normal normal normal 21px/1 Fontawesome;
-                color: white;
-            }
-        }
-        .slick-arrow.slick-next {
-            left: 21%;
-            background-size: contain;
-            background: rgba($color: #424242, $alpha: 0.4);
-            width: 50px;
-            height: 50px;
-            &::before {
-                content: '\f105';
-                display: block;
-                font: normal normal normal 21px/1 Fontawesome;
-                color: white;
-            }
-        }
-    }
-    .more {
-        color: white;
-        font-size: 15px;
+    &_part {
+        padding: 0;
         display: flex;
-        align-items: center;
-        width: 150px;
-        position: absolute;
-        bottom: 5%;
-        right: 15%;
-        img {
-            margin-right: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        list-style: none;
+        max-width: 1280px;
+        margin-top: 50px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        li {
+            margin: 30px 20px;
+            width: 200px;
+            figure {
+                margin: 0;
+                h3 {
+                    font-size: 21px;
+                    color: white;
+                    display: flex;
+                    align-items: center;
+                    img {
+                        margin-right: 10px;
+                    }
+                }
+            }
+            figcaption {
+                p {
+                    color: white;
+                }
+                .tag {
+                    display: flex;
+                    margin: 10px 0;
+                    p {
+                        font-size: 13px;
+                        margin-right: 10px;
+                    }
+                    .new-tag {
+                        background-color: #68ada3;
+                        padding: 1px 5px;
+                    }
+                    .recommend-tag {
+                        background-color: #ff8a00;
+                        padding: 1px 5px;
+                    }
+                    .sale {
+                        background-color: #d04b5b;
+                        padding: 1px 5px;
+                    }
+                }
+                .foodname {
+                    font-size: 13px;
+                    min-height: 60px;
+                }
+                .foodcost {
+                    font-size: 13px;
+                }
+                .cart {
+                    margin-top: 10px;
+                    a {
+                        background-color: #B0A26F;
+                        color: #000;
+                        font-size: 13px;
+                        padding: 5px 10px;
+                        display: flex;
+                        align-items: center;
+                        width: 110px;
+                        margin-left: auto;
+                        img {
+                            width: 13px;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 .category {
-    background: url(../img/cateback.png);
+    background: url(../img/categoryback.png);
     background-size: 100%;
     padding-bottom: 3%;
     .productcategory {
@@ -805,7 +920,6 @@ header {
             margin-right: auto;
             margin-top: 50px;
             padding-bottom: 20px;
-            border-bottom: 1px dotted white;
             li {
                 width: 375px;
                 position: relative;
@@ -878,6 +992,7 @@ header {
         .copy {
             font-size: 11px;
             text-align: center;
+            color: white;
         }
     }
 }

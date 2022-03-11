@@ -334,6 +334,12 @@ header .header .header__right .bottomheader {
   margin-top: 20px;
 }
 
+@media screen and (max-width: 1500px) {
+  header .header .header__right .bottomheader {
+    display: none;
+  }
+}
+
 header .header .header__right .bottomheader a {
   color: white;
   font-size: 16px;
@@ -587,6 +593,8 @@ header .g-nav .list li.order_btn a {
   margin-left: auto;
   margin-right: auto;
   margin-top: 3%;
+  padding-bottom: 50px;
+  border-bottom: 1px dotted white;
 }
 
 .banner .news .title p {
@@ -690,7 +698,7 @@ header .g-nav .list li.order_btn a {
   width: 100%;
   background: url(../img/back1.png);
   background-size: 100%;
-  padding-bottom: 5%;
+  padding-bottom: 3%;
 }
 
 .ranking h2 {
@@ -737,6 +745,7 @@ header .g-nav .list li.order_btn a {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 50px;
 }
 
 .ranking_part li {
@@ -790,7 +799,7 @@ header .g-nav .list li.order_btn a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 100px;
+  width: 110px;
   margin-left: auto;
 }
 
@@ -804,30 +813,30 @@ header .g-nav .list li.order_btn a {
   background-size: 100%;
 }
 
-.recommend {
+.recommend-section .recommend {
   padding-top: 4%;
   position: relative;
   width: 100%;
   background: transparent;
 }
 
-.recommend h2 {
+.recommend-section .recommend h2 {
   margin: 0;
   color: white;
   text-align: center;
   letter-spacing: 10px;
 }
 
-.recommend h2 .eng {
+.recommend-section .recommend h2 .eng {
   font-size: 11px;
   letter-spacing: 6px;
 }
 
-.recommend h2 .under {
+.recommend-section .recommend h2 .under {
   position: relative;
 }
 
-.recommend h2 .under::after {
+.recommend-section .recommend h2 .under::after {
   content: '';
   display: block;
   background: white;
@@ -840,23 +849,23 @@ header .g-nav .list li.order_btn a {
           transform: translateX(-50%);
 }
 
-.recommend .recommendslider {
+.recommend-section .recommend .recommendslider {
   margin-top: 3%;
 }
 
-.recommend .recommendslider .slick-list {
+.recommend-section .recommend .recommendslider .slick-list {
   margin-left: -10px;
 }
 
-.recommend .recommendslider .slick-slide {
+.recommend-section .recommend .recommendslider .slick-slide {
   margin-left: 10px;
 }
 
-.recommend .recommendslider .slick-slide img {
+.recommend-section .recommend .recommendslider .slick-slide img {
   width: 100%;
 }
 
-.recommend .recommendslider .slick-arrow {
+.recommend-section .recommend .recommendslider .slick-arrow {
   position: absolute;
   bottom: -20%;
   margin: -20px 0px 0px 0px;
@@ -872,16 +881,16 @@ header .g-nav .list li.order_btn a {
   cursor: pointer;
 }
 
-.recommend .recommendslider .slick-arrow,
-.recommend .recommendslider .slick-arrow:focus,
-.recommend .recommendslider .slick-arrow:active {
+.recommend-section .recommend .recommendslider .slick-arrow,
+.recommend-section .recommend .recommendslider .slick-arrow:focus,
+.recommend-section .recommend .recommendslider .slick-arrow:active {
   border: none;
   background: none;
   outline: none;
   padding: 0;
 }
 
-.recommend .recommendslider .slick-arrow.slick-prev {
+.recommend-section .recommend .recommendslider .slick-arrow.slick-prev {
   left: 18%;
   background-size: contain;
   background: rgba(66, 66, 66, 0.4);
@@ -889,14 +898,14 @@ header .g-nav .list li.order_btn a {
   height: 50px;
 }
 
-.recommend .recommendslider .slick-arrow.slick-prev::before {
+.recommend-section .recommend .recommendslider .slick-arrow.slick-prev::before {
   content: '\f104';
   display: block;
   font: normal normal normal 21px/1 Fontawesome;
   color: white;
 }
 
-.recommend .recommendslider .slick-arrow.slick-next {
+.recommend-section .recommend .recommendslider .slick-arrow.slick-next {
   left: 21%;
   background-size: contain;
   background: rgba(66, 66, 66, 0.4);
@@ -904,14 +913,14 @@ header .g-nav .list li.order_btn a {
   height: 50px;
 }
 
-.recommend .recommendslider .slick-arrow.slick-next::before {
+.recommend-section .recommend .recommendslider .slick-arrow.slick-next::before {
   content: '\f105';
   display: block;
   font: normal normal normal 21px/1 Fontawesome;
   color: white;
 }
 
-.recommend .more {
+.recommend-section .recommend .more {
   color: white;
   font-size: 15px;
   display: -webkit-box;
@@ -926,12 +935,155 @@ header .g-nav .list li.order_btn a {
   right: 15%;
 }
 
-.recommend .more img {
+.recommend-section .recommend .more img {
   margin-right: 10px;
 }
 
+.mainlist {
+  background: url("../img/cateback.png");
+  background-size: 100%;
+  padding-bottom: 100px;
+}
+
+.mainlist h2 {
+  padding: 5% 0 0;
+  margin: 0;
+  color: white;
+  text-align: center;
+  letter-spacing: 10px;
+  font-size: 32px;
+}
+
+.mainlist h2 .eng {
+  font-size: 11px;
+  letter-spacing: 10px;
+}
+
+.mainlist h2 .under {
+  position: relative;
+}
+
+.mainlist h2 .under::after {
+  content: '';
+  display: block;
+  background: white;
+  height: 2px;
+  position: absolute;
+  bottom: -10px;
+  width: 30px;
+  left: 55%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+.mainlist_part {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+  max-width: 1280px;
+  margin-top: 50px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mainlist_part li {
+  margin: 30px 20px;
+  width: 200px;
+}
+
+.mainlist_part li figure {
+  margin: 0;
+}
+
+.mainlist_part li figure h3 {
+  font-size: 21px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mainlist_part li figure h3 img {
+  margin-right: 10px;
+}
+
+.mainlist_part li figcaption p {
+  color: white;
+}
+
+.mainlist_part li figcaption .tag {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+}
+
+.mainlist_part li figcaption .tag p {
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.mainlist_part li figcaption .tag .new-tag {
+  background-color: #68ada3;
+  padding: 1px 5px;
+}
+
+.mainlist_part li figcaption .tag .recommend-tag {
+  background-color: #ff8a00;
+  padding: 1px 5px;
+}
+
+.mainlist_part li figcaption .tag .sale {
+  background-color: #d04b5b;
+  padding: 1px 5px;
+}
+
+.mainlist_part li figcaption .foodname {
+  font-size: 13px;
+  min-height: 60px;
+}
+
+.mainlist_part li figcaption .foodcost {
+  font-size: 13px;
+}
+
+.mainlist_part li figcaption .cart {
+  margin-top: 10px;
+}
+
+.mainlist_part li figcaption .cart a {
+  background-color: #B0A26F;
+  color: #000;
+  font-size: 13px;
+  padding: 5px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 110px;
+  margin-left: auto;
+}
+
+.mainlist_part li figcaption .cart a img {
+  width: 13px;
+  margin-right: 5px;
+}
+
 .category {
-  background: url(../img/cateback.png);
+  background: url(../img/categoryback.png);
   background-size: 100%;
   padding-bottom: 3%;
 }
@@ -985,7 +1137,6 @@ header .g-nav .list li.order_btn a {
   margin-right: auto;
   margin-top: 50px;
   padding-bottom: 20px;
-  border-bottom: 1px dotted white;
 }
 
 .category .productcategory_part li {
@@ -1075,6 +1226,7 @@ header .g-nav .list li.order_btn a {
 #footer .bottomfooter .copy {
   font-size: 11px;
   text-align: center;
+  color: white;
 }
 
 .top {

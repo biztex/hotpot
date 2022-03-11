@@ -1,0 +1,8 @@
+$medium-width: 768px;
+$small-width: 500px;
+$break-point: 1500px;
+@mixin media-screen($break-point) {
+    @media screen and (max-width: $break-point) {
+        @content;
+    }
+}

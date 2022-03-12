@@ -1,4 +1,18 @@
- <section class="banner">
+{% block javascript %}
+<script>
+
+
+$('.add-cart').click(function() {
+    alert("sdfs");
+    var data = $(this).data();
+    $('input[name="mode"]').val('add_cart');
+    $('#productForm' + data.cartid).submit()
+    return false;
+});
+</script>
+{% endblock %}
+
+<section class="banner">
         <div class="mv">
             <img src="{{ app.config.user_data_urlpath }}/img/MV.png">
         </div>
@@ -18,24 +32,7 @@
         </div>
 
         <div class="news">
-            <div class="title">
-                <p class="title_one">お知らせ</p>
-                <p class="title_two">news</p>
-            </div>
-            <div class="news-content">
-                <div class="content">
-                    <p class="date">2022.03.15</p>
-                    <p class="news-title">お知らせのタイトルがここに入り、これは仮のテキスト仮のテキストです。</p>
-                </div>
-                <div class="content">
-                    <p class="date">2022.03.15</p>
-                    <p class="news-title">お知らせのタイトルがここに入り、これは仮のテキスト仮のテキストです。</p>
-                </div>
-                <div class="content">
-                    <p class="date">2022.03.15</p>
-                    <p class="news-title">お知らせのタイトルがここに入り、これは仮のテキスト仮のテキストです。</p>
-                </div>
-            </div>
+            {{ render(path('block_news')) }}
         </div>
 
         <div class="sns">
@@ -45,3 +42,195 @@
             <a href=""><img src="{{ app.config.user_data_urlpath }}/img/twitter.png"></a>
         </div>
     </section>
+
+<section class="recommend-section">
+    <div class="recommend">
+        <h2><span class="eng">recommendation</span><br/>おす<span class="under">すめ</span>商品</h2>
+        <div class="recommendslider">
+            <div>
+                <img src="{{ app.config.user_data_urlpath }}/img/rec2.png">
+            </div>
+            <div>
+                <img src="{{ app.config.user_data_urlpath }}/img/rec2.png">
+            </div>      
+
+            <div>
+                <img src="{{ app.config.user_data_urlpath }}/img/rec2.png">
+            </div>
+
+            <div>
+                <img src="{{ app.config.user_data_urlpath }}/img/rec2.png">
+            </div>
+
+            <div>
+                <img src="{{ app.config.user_data_urlpath }}/img/rec2.png">
+            </div>
+
+
+        </div>
+        <!-- <a href="" class="more"><img src="/img/arrow1.png">商品一覧はこちら</a> -->
+    </div>
+</section>
+
+<section class="mainlist">
+    <h2><span class="eng">Product List</span><br/>商<span class="under">品一</span>覧</h2>
+    <ul class="mainlist_part">
+        {% set product = app['eccube.repository.product'].findAll() %}
+
+        {% for Product in product %}    
+        <li>
+            <figure>
+                <a href="{{ url('product_detail', {'id': Product.id}) }}">
+                    <img src="{{ app.config.image_save_urlpath }}/{{ Product.main_list_image|no_image_product }}" />
+                </a>
+            </figure>
+            <figcaption>
+                <div class="tag">
+                    <p class="new-tag">新商品</p>
+                    <p class="recommend-tag">おすすめ</p>
+                    <p class="sale">SALE</p>
+                </div>
+                <p class="foodname">{{ Product.name }}</p>
+                <p class="foodcost">{{ Product.getPrice02IncTaxMin|price }}</p>
+
+
+                {% if Product.stock_find %}
+                <!--▼買い物かご-->
+                {% set form = forms[Product.id] %}
+                 <form name="form{{ Product.id }}" id="productForm{{ Product.id }}" action="{{ url('product_detail', {'id': Product.id}) }}" method="post">
+                    <div class="cart1">
+                        <button type="submit" class="add-cart" data-cartid="{{ Product.id }}"><img src="{{ app.config.user_data_urlpath }}/img/carticon.png">商品を購入</button>
+                    </div>
+                </form>
+                  <!--▲買い物かご-->
+                {% else %}
+                    <div style="color:white">ただいま品切れ中です</div>
+                {% endif %}
+            </figcaption>
+        </li>
+        {% endfor %}
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+
+    </ul>
+</section>
+
+
+<section class="ranking">
+        <h2><span class="eng">ranking</span><br/>人気ラ<span class="under">ン</span>キング</h2>
+        <ul class="ranking_part">
+            <li>
+                <figure>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/one.png">1位</h3>
+                    <img src="{{ app.config.user_data_urlpath }}/img/rank1.png" />
+                </figure>
+                <figcaption>
+                    <p class="foodname">【博多本格もつ鍋セット】博多庵　もつ鍋セット（お醤油味・4～6人前）</p>
+                    <p class="foodcost">3,500円（税込）</p>
+                    <div class="cart">
+                        <a href=""><img src="{{ app.config.user_data_urlpath }}/img/carticon.png">商品を購入</a>
+                    </div>
+                </figcaption>
+            </li>
+
+            <li>
+                <figure>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/two.png">2位</h3>
+                    <img src="{{ app.config.user_data_urlpath }}/img/rank2.png" />
+                </figure>
+                <figcaption>
+                    <p class="foodname">ホルモン焼き（国産和牛小腸）500g(250g×2袋)／ホルモン／もつ焼き/ホルモン焼き</p>
+                    <p class="foodcost">2,680円（税込）</p>
+                    <div class="cart">
+                        <a href=""><img src="{{ app.config.user_data_urlpath }}/img/carticon.png">商品を購入</a>
+                    </div>
+                </figcaption>
+            </li>
+
+            <li>
+                <figure>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/three.png">3位</h3>
+                    <img src="{{ app.config.user_data_urlpath }}/img/rank3.png" />
+                </figure>
+                <figcaption>
+                    <p class="foodname">おうちごはん【増量用】もつ鍋用増量ホルモン250gx2/500g</p>
+                    <p class="foodcost">2,600円（税込）</p>
+                    <div class="cart">
+                        <a href=""><img src="{{ app.config.user_data_urlpath }}/img/carticon.png">商品を購入</a>
+                    </div>
+                </figcaption>
+            </li>
+
+            <li>
+                <figure>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/four.png">4位</h3>
+                    <img src="{{ app.config.user_data_urlpath }}/img/rank4.png" />
+                </figure>
+                <figcaption>
+                    <p class="foodname">【博多本格もつ鍋セット】博多庵　もつ鍋セット（お醤油味・4～6人前）</p>
+                    <p class="foodcost">2,680円（税込）</p>
+                    <div class="cart">
+                        <a href=""><img src="{{ app.config.user_data_urlpath }}/img/carticon.png">商品を購入</a>
+                    </div>
+                </figcaption>
+            </li>
+
+            <li>
+                <figure>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/five.png">5位</h3>
+                    <img src="{{ app.config.user_data_urlpath }}/img/rank5.png" />
+                </figure>
+                <figcaption>
+                    <p class="foodname">【博多本格もつ鍋セット】博多庵　もつ鍋セット（お醤油味・4～6人前）</p>
+                    <p class="foodcost">4,900円（税込）</p>
+                    <div class="cart">
+                        <a href=""><img src="{{ app.config.user_data_urlpath }}/img/carticon.png">商品を購入</a>
+                    </div>
+                </figcaption>
+
+            </li>
+
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+
+
+        </ul>
+    </section>
+
+ 
+
+      <section class="category">
+
+        <div class="productcategory">
+            <h2><span class="eng">category</span><br/>商品<span class="under">カテ</span>ゴリ</h2>
+            <ul class="productcategory_part">
+                <li>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/down.png">もつ鍋</h3>
+                    <a href=""><img src="{{ app.config.user_data_urlpath }}/img/cate1.PNG"></a>
+                    <p>仮テキスト、本場博多の中でも厳選された良質なモツを扱う、久山博多庵のモツを取り扱っています。</p>
+                </li>
+
+                <li>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/down.png">カニ</h3>
+                    <a href=""><img src="{{ app.config.user_data_urlpath }}/img/cate2.PNG"></a>
+                    <p>仮テキスト、本場北海道の中でも厳選された良質なカニを扱う、◯◯のタラバガニを取り扱っています。</p>
+                </li>
+
+                <li>
+                    <h3><img src="{{ app.config.user_data_urlpath }}/img/down.png">牡蠣</h3>
+                    <a href=""><img src="{{ app.config.user_data_urlpath }}/img/cate3.PNG"></a>
+                    <p>仮テキスト、本場博多の中でも厳選された良質な牡蠣を扱う、◯◯の牡蠣を取り扱っています。</p>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+
+

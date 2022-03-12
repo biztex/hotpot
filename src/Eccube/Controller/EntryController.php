@@ -143,9 +143,13 @@ class EntryController extends AbstractController
                     }
             }
         }
+        $Cart = $app['eccube.service.cart']->getCartObj();
 
         return $app->render('Entry/index.twig', array(
+
             'form' => $form->createView(),
+            'Cart' => $Cart,
+
         ));
     }
 

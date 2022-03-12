@@ -833,6 +833,7 @@ header {
         }
         .recommendslider {
             margin-top: 3%;
+            margin-bottom: 0;
             @include media-screen($medium-width) {
                 margin-top: 10%;
             }
@@ -1027,9 +1028,9 @@ header {
                         font-size: 18px;
                     }
                 }
-                .cart {
+                .cart1 {
                     margin-top: 10px;
-                    a {
+                    button {
                         background-color: #B0A26F;
                         color: #000;
                         font-size: 13px;
@@ -1038,6 +1039,8 @@ header {
                         align-items: center;
                         width: 110px;
                         margin-left: auto;
+                        cursor: pointer;
+                        outline: none;
                         @include media-screen($small-width) {
                             font-size: 15px;
                             width: 120px;
@@ -1188,7 +1191,7 @@ header {
 }
 
 .top {
-    color: white;
+    color: white !important;
     background: #303030;
     border-radius: 50%;
     position: fixed;

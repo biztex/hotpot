@@ -1536,6 +1536,7 @@ header .g-nav .list li.order_btn a {
 
 #footer {
     padding-bottom: 50px;
+    background: #333;
 }
 
 #footer .topfooter {
@@ -1624,3 +1625,30 @@ header .g-nav .list li.order_btn a {
 
 
 /*# sourceMappingURL=style.css.map */
+
+
+/* Detail Page */
+
+.container-fluid {
+    max-width: 100%;
+    padding: 0;
+}
+
+#wrapper {
+    background: url(../img/back_detail.png);
+    background-size: cover;
+}
+
+#item_detail {
+    padding: 50px 20px;
+    background: white;
+    margin-top: 300px;
+    margin-bottom: 50px;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.best img {
+    width: 100%;
+}

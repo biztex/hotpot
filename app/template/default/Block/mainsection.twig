@@ -3,7 +3,6 @@
 
 
 $('.add-cart').click(function() {
-    alert("sdfs");
     var data = $(this).data();
     $('input[name="mode"]').val('add_cart');
     $('#productForm' + data.cartid).submit()
@@ -43,8 +42,10 @@ $('.add-cart').click(function() {
         </div>
     </section>
 
+ 
+
 <section class="recommend-section">
-    <div class="recommend">
+    {# <div class="recommend">
         <h2><span class="eng">recommendation</span><br/>おす<span class="under">すめ</span>商品</h2>
         <div class="recommendslider">
             <div>
@@ -69,13 +70,14 @@ $('.add-cart').click(function() {
 
         </div>
         <!-- <a href="" class="more"><img src="/img/arrow1.png">商品一覧はこちら</a> -->
-    </div>
+    </div> #}
+    {{ render(path('recommend_product_block')) }}
 </section>
 
 <section class="mainlist">
     <h2><span class="eng">Product List</span><br/>商<span class="under">品一</span>覧</h2>
     <ul class="mainlist_part">
-        {% set product = app['eccube.repository.product'].findAll() %}
+        {% set product = app['eccube.repository.product'].findBy({'Status' : '1'}) %}
 
         {% for Product in product %}    
         <li>
@@ -86,9 +88,16 @@ $('.add-cart').click(function() {
             </figure>
             <figcaption>
                 <div class="tag">
-                    <p class="new-tag">新商品</p>
+                {% if Product.ProductTag is not empty %}
+                    <!--▼商品タグ-->
+                        {% for ProductTag in Product.ProductTag %}
+                            <p id="product_tag_box__product_tag--{{ ProductTag.Tag.id }}">{{ ProductTag.Tag }}</p>
+                        {% endfor %}
+                    <!--▲商品タグ-->
+                {% endif %}
+                    {# <p class="new-tag">新商品</p>
                     <p class="recommend-tag">おすすめ</p>
-                    <p class="sale">SALE</p>
+                    <p class="sale">SALE</p> #}
                 </div>
                 <p class="foodname">{{ Product.name }}</p>
                 <p class="foodcost">{{ Product.getPrice02IncTaxMin|price }}</p>
@@ -212,20 +221,20 @@ $('.add-cart').click(function() {
             <ul class="productcategory_part">
                 <li>
                     <h3><img src="{{ app.config.user_data_urlpath }}/img/down.png">もつ鍋</h3>
-                    <a href=""><img src="{{ app.config.user_data_urlpath }}/img/cate1.PNG"></a>
+                    <a href="{{ url('product_list')}}?category_id=7"><img src="{{ app.config.user_data_urlpath }}/img/cate1.PNG"></a>
                     <p>仮テキスト、本場博多の中でも厳選された良質なモツを扱う、久山博多庵のモツを取り扱っています。</p>
                 </li>
 
                 <li>
                     <h3><img src="{{ app.config.user_data_urlpath }}/img/down.png">カニ</h3>
-                    <a href=""><img src="{{ app.config.user_data_urlpath }}/img/cate2.PNG"></a>
-                    <p>仮テキスト、本場北海道の中でも厳選された良質なカニを扱う、◯◯のタラバガニを取り扱っています。</p>
+                    <a href="{{ url('product_list')}}?category_id=8"><img src="{{ app.config.user_data_urlpath }}/img/cate2.PNG"></a>
+                    <p>仮テキスト、本場北海道の中でも厳選された良質なカニを扱う、◯◯のタラバガニを取り扱っています。</p></a>
                 </li>
 
                 <li>
                     <h3><img src="{{ app.config.user_data_urlpath }}/img/down.png">牡蠣</h3>
-                    <a href=""><img src="{{ app.config.user_data_urlpath }}/img/cate3.PNG"></a>
-                    <p>仮テキスト、本場博多の中でも厳選された良質な牡蠣を扱う、◯◯の牡蠣を取り扱っています。</p>
+                    <a href="{{ url('product_list')}}?category_id=9"><img src="{{ app.config.user_data_urlpath }}/img/cate3.PNG"></a>
+                    <p>仮テキスト、本場博多の中でも厳選された良質な牡蠣を扱う、◯◯の牡蠣を取り扱っています。</p></a>
                 </li>
             </ul>
         </div>

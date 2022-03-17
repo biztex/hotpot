@@ -1,5 +1,5 @@
 {% set Cart = app['eccube.service.cart'].getCartObj() %}
-<header>
+
         <div class="header">
             <div class="logo">
                 <a href="{{ url('top') }}"><img src="{{ app.config.user_data_urlpath }}/img/logo.png"></a>
@@ -9,30 +9,27 @@
                 <div class="topheader">
                     {% if is_granted('ROLE_USER') %}
                         <a href="{{ url('mypage') }}" class="registration tag">マイページ</a>
-                        <a href="{{ url('logout') }}"><svg class="cb cb-lock-circle"><use xlink:href="#cb-lock-circle" /></svg>ログアウト</a>
+                        <a href="{{ url('logout') }}" class="login tag"></svg>ログアウト</a>
                     {% else %}
                         <a href="{{ url('entry') }}" class="registration tag">会員登録</a>
                         <a href="{{ url('mypage_login') }}" class="login tag">ログイン</a>
                     {% endif %}
+                    {{ render(path('block_search_product')) }}
 
-                    <div class="search tag">
-                        <input type="search" placeholder="商品検索" />
-                        <img src="{{ app.config.user_data_urlpath }}/img/search.png">
-                    </div>
+                   
                     <div class="phone tag">
                         <a href="tel:092-410-3029"><span class="call_line"><span class="number">092-410-3029</span><br><span class="time">受付時間 10:00〜21:00</span></span></a>
                     </div>
-                    <a href="#" class="cart1 tag"><img src="{{ app.config.user_data_urlpath }}/img/cart.png"><span class="count">{{ Cart.total_quantity }}</span></a>
-
+                    <a href="{{ url('cart')}}" class="cart1 tag"><img src="{{ app.config.user_data_urlpath }}/img/cart.png"><span class="count">{{ Cart.total_quantity }}</span></a>
                 </div>
                 <div class="bottomheader">
-                    <a href="#">もつ鍋</a>
-                    <a href="#">カニ</a>
-                    <a href="#">牡蠣</a>
-                    <a href="#">商品一覧</a>
-                    <a href="#">ご利用ガイド</a>
-                    <a href="#">よくあるご質問</a>
-                    <a href="#">お問い合わせ</a>
+                    <a href="{{ url('product_list')}}?category_id=8">もつ鍋</a>
+                    <a href="{{ url('product_list')}}?category_id=9">カニ</a>
+                    <a href="{{ url('product_list')}}?category_id=10">牡蠣</a>
+                    <a href="{{ url('product_list')}}">商品一覧</a>
+                    <a href="{{ url('help_guide')}}">ご利用ガイド</a>
+                    <a href="{{ url('help_about')}}">よくあるご質問</a>
+                    <a href="{{ url('contact')}}">お問い合わせ</a>
                 </div>
                 <a class="menu-trigger visible-sp">
                     <span></span><span></span><span></span>
@@ -42,16 +39,22 @@
         </div>
         <nav class="g-nav visible-sp">
             <ul class="list">
-                <li><a href="">はじめての方へ</a></li>
-                <li><a href="">Function JOURNAL</a></li>
-                <li><a href="">店舗紹介</a></li>
-                <li><a href="">お問合せ</a></li>
-                <li>
-                    <a href="" class="btn-mm-dark magic-hover magic-hover__square"><img src="{{ app.config.user_data_urlpath }}/img/icon-account.png"></a>
-                </li>
-                <li>
-                    <a href="" class="btn-mm-dark magic-hover magic-hover__square"><img src="{{ app.config.user_data_urlpath }}/img/icon-bag.png"></a>
-                </li>
+                {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ url('mypage') }}" class="registration tag">マイページ</a></li>
+                    <li><a href="{{ url('logout') }}"><svg class="cb cb-lock-circle"><use xlink:href="#cb-lock-circle" /></svg>ログアウト</a></li>
+                {% else %}
+                     <li><a href="{{ url('entry') }}">会員登録</a></li>
+                    <li><a href="{{ url('mypage_login') }}">ログイン</a></li>
+                {% endif %}
+                <li><a href="{{ url('cart') }}">カートを見る</a></li>
+                <li><a href="{{ url('product_list') }}?category_id=8">もつ鍋</a></li>
+                <li><a href="{{ url('product_list') }}?category_id=9">カニ</a></li>
+                <li><a href="{{ url('product_list') }}?category_id=10">牡蠣</a></li>
+                <li><a href="{{ url('product_list')}}">商品一覧</a></li>
+                <li><a href="{{ url('help_guide')}}">ご利用ガイド</a></li>
+                <li><a href="{{ url('help_about')}}">よくあるご質問</a></li>
+                <li><a href="{{ url('contact')}}">お問い合わせ</a></li>
+               
             </ul>
         </nav>
-    </header>
+

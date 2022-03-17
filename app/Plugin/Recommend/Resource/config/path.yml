@@ -1,0 +1,4 @@
+# urlpath
+recommend_path: /recommend
+recommend_assetspath: /recommend/assets
+recommend_img_urlpath: /recommend/assets/img

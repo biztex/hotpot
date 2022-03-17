@@ -1,0 +1,13 @@
+Plugin\SalesRanking\Entity\Config:
+    type: entity
+    table: plg_sales_ranking_dtb_config
+    repositoryClass: Plugin\SalesRanking\Repository\ConfigRepository
+    id:
+        name:
+            type: text
+            nullable: false
+    fields:
+        value:
+            type: text
+            nullable: true
+    lifecycleCallbacks: {  }

@@ -1,0 +1,39 @@
+Plugin\Recommend\Entity\RecommendProduct:
+    type: entity
+    table: plg_recommend_product
+    repositoryClass: Plugin\Recommend\Repository\RecommendProductRepository
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            id: true
+            column: recommend_product_id
+            generator:
+                strategy: AUTO
+    fields:
+        comment:
+            type: text
+            nullable: true
+        rank:
+            type: integer
+            nullable: false
+            default: '1'
+        del_flg:
+            type: smallint
+            nullable: false
+            unsigned: false
+            default: '0'
+        create_date:
+            type: datetime
+            nullable: false
+        update_date:
+            type: datetime
+            nullable: false
+    manyToOne:
+        Product:
+            targetEntity: Eccube\Entity\Product
+            joinColumn:
+                name: product_id
+                referencedColumnName: product_id
+    lifecycleCallbacks: {  }

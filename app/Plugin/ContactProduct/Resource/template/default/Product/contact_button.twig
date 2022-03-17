@@ -1,0 +1,17 @@
+{#
+* Plugin Name : ContactProduct
+*
+* Copyright (C) 2015 BraTech Co., Ltd. All Rights Reserved.
+* http://www.bratech.co.jp/
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+#}
+<form name="contact_product" id="contact_product" action="{{ url('contact') }}" method="post">
+    <input type="hidden" name="product_id" value="{{ product_id }}">
+    <div class="btn_area">
+        <ul class="row">
+            <li class="col-xs-12 col-sm-8"><button type="submit" class="btn btn-success btn-block btn_contact">商品についてのお問い合わせ</button></li>
+        </ul>
+    </div>
+</form>

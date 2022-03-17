@@ -1,0 +1,6 @@
+name: 商品お問い合わせ
+code: ContactProduct
+event: ContactProductEvent
+service:
+    - ContactProductServiceProvider
+version: 1.0.2

@@ -1,0 +1,7 @@
+name: おすすめ商品管理プラグイン
+code: Recommend
+version: 2.0.1
+service:
+    - RecommendServiceProvider
+orm.path:
+    - /Resource/doctrine

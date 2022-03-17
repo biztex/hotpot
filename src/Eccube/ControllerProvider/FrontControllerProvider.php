@@ -76,6 +76,7 @@ class FrontControllerProvider implements ControllerProviderInterface
         $c->match('/block/search_product', '\Eccube\Controller\Block\SearchProductController::index')->bind('block_search_product');
         $c->match('/block/news', '\Eccube\Controller\Block\NewsController::index')->bind('block_news');
         $c->match('/block/login', '\Eccube\Controller\Block\LoginController::index')->bind('block_login');
+        $c->match('/block/recommend', '\Plugin\Recommend\Controller\Block\RecommendController::index')->bind('recommend_product_block');
 
         // 特定商取引 order -> help/traderaw
         $c->match('/help/about', '\Eccube\Controller\HelpController::about')->bind('help_about');

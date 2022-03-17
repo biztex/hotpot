@@ -1,0 +1,166 @@
+{#
+ * This file is part of the Recommend Product plugin
+ *
+ * Copyright (C) 2016 LOCKON CO.,LTD. All Rights Reserved.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+#}
+{% extends 'default_frame.twig' %}
+
+{% set menus = ['content', 'admin_recommend'] %}
+
+{% block title %}おすすめ商品管理{% endblock %}
+{% block sub_title %}おすすめ商品内容設定{% endblock %}
+
+{% form_theme form 'Form/bootstrap_3_horizontal_layout.html.twig' %}
+{% form_theme searchProductModalForm 'Form/bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block javascript %}
+<script>
+    var recommend = '{{ recommend_products|raw }}';
+
+    $(function() {
+        $('#showSearchProductModal').on('click', function() {
+                var tbody = $('#searchProductModalList tbody');
+                tbody.children().remove();
+                $('div.box-footer').remove();
+            }
+        );
+
+        $('#searchProductModalButton').on('click', function() {
+            var list = $('#searchProductModalList');
+            list.children().remove();
+            $.ajax({
+                type: 'POST',
+                dataType: 'html',
+                data: {
+                    'id' : $('#admin_search_product_id').val(),
+                    'category_id' : $('#admin_search_product_category_id').val()
+                },
+                url: '{{ url('admin_recommend_search_product') }}',
+                success: function(data) {
+                    // モーダルに結果を書き出し.
+                    $('#searchProductModalList').html(data);
+
+                },
+                error: function() {
+                    alert('Search product failed.');
+                }
+            });
+        });
+    });
+</script>
+{% endblock javascript %}
+
+{% block main %}
+<div class="row" id="aside_wrap">
+    <form role="form" name="form1" id="form1" method="post">
+    {{ form_widget(form._token) }}
+        <div class="col-md-9">
+            <div class="box accordion">
+                <div class="box-header toggle active">
+                    <h3 class="box-title">おすすめ商品情報<svg class="cb cb-angle-down icon_down"> <use xlink:href="#cb-angle-down" /></svg></h3>
+                </div><!-- /.box-header -->
+                <div class="box-body accpanel" style="display: block;">
+                    <div class="order_list form-horizontal">
+                        {# おすすめ商品ID #}
+                        <div class="form-group" style="display: none;">
+                            {{ form_label(form.id) }}
+                            <div class="col-sm-9 col-lg-10">
+                                {{ form_widget(form.id) }}
+                                {{ form_errors(form.id) }}
+                            </div>
+                        </div>
+                        {# 商品ID #}
+                        <div class="form-group" style="display: block;">
+                            {{ form_label(form.id) }}
+                            <div class="col-sm-9 col-lg-10">
+                                {% if Product is not null %}
+                                    <div id="product_image">
+                                        <a href="{{ url('admin_product_product_edit', { id : Product.id }) }}" id="product_image_link">
+                                            <img src="{{ app.config.image_save_urlpath }}/{{ Product.mainFileName|no_image_product }}" style="max-width: 135px;" id="product_image_img"/>
+                                        </a>
+                                    </div>
+                                    <br>
+                                    <p id="product_name">
+                                        {{ Product.name }}
+                                    </p>
+                                    <br>
+                                    <p id="product_code">
+                                        {{ Product.code_min }}
+                                        {% if Product.code_min != Product.code_max %} ～ {{ Product.code_max }}
+                                        {% endif %}
+                                    </p>
+                                {% else %}
+                                    <div id="product_image" class="hidden">
+                                        <a href="" id="product_image_link">
+                                            <img src="" style="max-width: 135px;" id="product_image_img"/>
+                                        </a>
+                                    </div>
+                                    <p id="product_name" class="hidden"></p>
+                                    <p id="product_code" class="hidden"></p>
+                                {% endif %}
+                                <div class="row col-sm-3 col-lg-3">
+                                    <a id="showSearchProductModal" class="btn btn-default btn-block btn-sm" data-toggle="modal" data-target="#searchProductModal">商品の追加</a>
+                                </div>
+                                <div class="clearfix"></div>
+                                {{ form_widget(form.Product) }}
+                                {{ form_errors(form.Product) }}
+                                <div id="warning" class="text-info"></div>
+                            </div>
+                        </div>
+                        {# コメント #}
+                        <div class="form-group">
+                            {{ form_label(form.comment) }}
+                            <div class="col-sm-9 col-lg-10">
+                                {{ form_widget(form.comment) }}
+                                {{ form_errors(form.comment) }}
+                                <p class="text-muted" style="text-align: right">（最大4000文字）</p>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+            <div class="row">
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 text-center btn_area">
+                    <button class="btn btn-primary btn-block btn-lg" type="submit">登録</button>
+                    <p><a href="{{ url('admin_recommend_list') }}">戻る</a></p>
+                </div>
+            </div>
+
+        </div><!-- /.col -->
+    </form>
+</div>
+{% endblock %}
+
+{% block modal %}
+{#
+// =======================================
+// 商品検索モーダル ダイアログ表示
+// =======================================
+#}
+<div class="modal" id="searchProductModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="modal-close" aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">商品検索</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    {{ form_widget(searchProductModalForm.id, { attr : { placeholder : '商品名・ID・コード' } } ) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(searchProductModalForm.category_id) }}
+                </div>
+                <div class="form-group">
+                    <button type="button" id="searchProductModalButton" class="btn btn-primary" >検索</button>
+                </div>
+                <div class="form-group" id="searchProductModalList">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

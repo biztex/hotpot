@@ -1,0 +1,15 @@
+#main_middle {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+    margin-bottom: 100px;
+    width: 90%;
+}
+
+@media screen and (max-width: 500px) {
+    #main_middle {
+        margin-top: 150px;
+        margin-bottom: 100px;
+    }
+}

@@ -1,0 +1,64 @@
+{#
+* Plugin Name : SalesRanking
+*
+* Copyright (C) 2015 BraTech Co., Ltd. All Rights Reserved.
+* http://www.bratech.co.jp/
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+#}
+
+{% extends 'default_frame.twig' %}
+{% set menus = ['setting', 'admin_setting_sales_ranking'] %}
+{% block title %}基本情報設定{% endblock %}
+{% block sub_title %}売上ランキングブロック設定{% endblock %}
+
+{% form_theme form 'Form/bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block javascript %}
+<script>
+function changeAction(action) {
+    document.form1.action = action;
+}
+</script>
+{% endblock javascript %}
+
+{% block main %}
+            <form role="form" name="form1" id="form1" method="post" action="" novalidate enctype="multipart/form-data">
+            {{ form_widget(form._token) }}
+            <div class="row" id="aside_wrap">
+                <div class="col-md-9">
+                    <div class="box form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                {{ form_label(form.term) }}
+                                <div class="col-sm-9 col-lg-10">
+                                    {{ form_widget(form.term) }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.display_num) }}
+                                <div class="col-sm-9 col-lg-10">
+                                   {{ form_widget(form.display_num) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="col_inner" id="aside_column">
+                        <div class="box no-header">
+                            <div class="box-body">
+                                <div class="row text-center">
+                                    <div class="col-sm-6 col-sm-offset-3 col-md-12 col-md-offset-0">
+                                        <button class="btn btn-primary btn-block btn-lg" onclick="document.form1.submit();">登録</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+{% endblock %}

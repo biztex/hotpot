@@ -1,20 +1,21 @@
 <div>
         <div class="topfooter">
-            <ul>
-                <li><a href="">もつ鍋</a></li>
-                <li><a href="">カニ</a></li>
-                <li><a href="">牡蠣</a></li>
-                <li><a href="">商品一覧</a></li>
-                <li><a href="">ご利用ガイド</a></li>
-                <li><a href="">よくあるご質問</a></li>
-                <li><a href="">お問い合わせ</a></li>
+            <ul> 
+                <li><a href="{{ url('product_list')}}?category_id=7">もつ鍋</a></li>
+                <li><a href="{{ url('product_list')}}?category_id=8">カニ</a></li>
+                <li><a href="{{ url('product_list')}}?category_id=9">牡蠣</a></li>
+                <li><a href="{{ url('product_list')}}">商品一覧</a></li>
+                <li><a href="{{ url('help_guide')}}">ご利用ガイド</a></li>
+                <li><a href="{{ url('help_about')}}">よくあるご質問</a></li>
+                <li><a href="{{ url('contact')}}">お問い合わせ</a></li>
+                <li><a href="{{ url('help_tradelaw')}}">特定商取引法に基づく表記</a></li>
             </ul>
         </div>
         <div class="bottomfooter">
             <div class="footerlogo">
                 <img src="{{ app.config.user_data_urlpath }}/img/footerlogo.png">
                 <p class="company">株式会社Q太郎フーズ</p>
-                <p class="address">〒811-2308　　福岡県糟屋郡粕屋町大字内橋705-1</p>
+                <p class="address">〒812-0028　　福岡県福岡市博多区須崎町5-9</p>
                 <p class="address">TEL:092-410-3029 受付時間 10:00〜21:00</p>
             </div>
                 <p class="copy">©BBQ Taro All Rights Reserved.</p>

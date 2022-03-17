@@ -1,0 +1,55 @@
+{#
+* Plugin Name : SalesRanking
+*
+* Copyright (C) 2015 BraTech Co., Ltd. All Rights Reserved.
+* http://www.bratech.co.jp/
+*
+* For the full copyright and license information, please view the LICENSE
+* file that was distributed with this source code.
+#}
+
+<!--売上ランキング-->
+{% if ItemList %}
+<style>
+#sales_ranking .heading01 {
+  background: #f8f8f8;
+  padding: 16px;
+}
+
+#sales_ranking .item_name span {
+  color: #fff;
+  padding: 0.2em 0.7em;
+  margin-right: 1em;
+}
+</style>
+
+<div id="sales_ranking" class="item_gallery">
+    <h2 class="heading01">売上ランキング</h2>
+    <div class="row">
+      {% for Item in ItemList  %}
+        <div class="col-sm-3 col-xs-6">
+            <div class="pickup_item">
+                <a href="{{ url('product_detail', {'id': Item.id}) }}">
+                    <div class="item_photo"><img src="{{ app.config.image_save_urlpath }}/{{ Item.main_list_image|no_image_product }}"></div>
+                    <dl>
+                      <dt class="item_name"><span class="label-warning">{{loop.index}}位</span>{{Item.name}}</dt>
+                      <dd class="item_price">
+                      {% if Item.hasProductClass -%}
+                          {% if Item.getPrice02Min == Item.getPrice02Max %}
+                          <p class="normal_price"><span class="price01_default">{{ Item.getPrice02IncTaxMin|price }}</span></p>
+                          {% elseif Item.getPrice02Min is not null and Item.getPrice02Max is not null %}
+                          <p class="normal_price"><span class="price01_default">{{ Item.getPrice02IncTaxMin|price }}</span> ～ <span class="price01_default">{{ Item.getPrice02IncTaxMax|price }}</span></p>
+                          {% endif %}
+                      {% else -%}
+                          {% if Item.getPrice02Max is not null %}
+                          <p class="normal_price"><span class="price01_default">{{ Item.getPrice02IncTaxMin|price }}</span></p>
+                          {% endif %}
+                      {% endif -%}
+                    </dl>
+                </a>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+</div>
+{% endif %}

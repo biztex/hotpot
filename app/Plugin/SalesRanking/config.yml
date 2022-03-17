@@ -1,0 +1,7 @@
+name: 売上ランキング
+code: SalesRanking
+version: 1.0.4
+service:
+    - SalesRankingServiceProvider
+orm.path:
+    - /Resource/doctrine

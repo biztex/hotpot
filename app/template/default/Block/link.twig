@@ -6,5 +6,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
-
     <link href="{{ app.config.user_data_urlpath }}/css/custom.css"  rel="stylesheet">
+{% if ( app.request.get('_route') != "product_detail" ) and ( app.request.get('_route') != "homepage" ) %}
+    <link href="{{ app.config.user_data_urlpath }}/css/style-yps.css"  rel="stylesheet">
+    <link href="{{ app.config.user_data_urlpath }}/css/customdetail.css"  rel="stylesheet">
+{% endif %}

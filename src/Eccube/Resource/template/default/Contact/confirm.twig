@@ -53,7 +53,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         {{ form_widget(form.kana.kana02) }}
                                     </dd>
                                 </dl>
-                                <dl id="confirm_box__address">
+                                {# <dl id="confirm_box__address">
                                     <dt>{{ form_label(form.address) }}</dt>
                                     <dd>
                                         <div class="form-group">
@@ -61,7 +61,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             {{ form_widget(form.address) }}
                                         </div>
                                     </dd>
-                                </dl>
+                                </dl> #}
                                 <dl id="confirm_box__tel">
                                     <dt>{{ form_label(form.tel) }}</dt>
                                     <dd>
@@ -73,9 +73,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <dl id="confirm_box__email">
                                     <dt>{{ form_label(form.email) }}</dt>
                                     <dd>
-                                        <div class="form-group">
-                                            {{ form_widget(form.email) }}
+                                        {% for emailField in form.email %}
+                                        <div class="form-group {% if emailField.vars.errors is not empty %}has-error{% endif %}">
+                                            {{ form_widget(emailField) }}
+                                            {{ form_errors(emailField) }}
                                         </div>
+                                        {% endfor %}
                                     </dd>
                                 </dl>
                                 <dl id="confirm_box__contents">
@@ -84,6 +87,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         <div class="column">
                                             {{ form_widget(form.contents) }}
                                         </div>
+                                    </dd>
+                                </dl>
+                                 <dl id="confirm_box__contents">
+                                    <dt>{{ form_label(form.type) }}</dt>
+                                    <dd class="form-group">
+                                        {{ form_widget(form.type) }}
+                                        {{ form_widget(form.type) }}
                                     </dd>
                                 </dl>
                             </div>

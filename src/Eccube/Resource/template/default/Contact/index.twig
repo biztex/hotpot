@@ -66,7 +66,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         {{ form_errors(form.kana.kana02) }}
                                     </dd>
                                 </dl>
-                                <dl id="top_box__address_detail">
+                                {# <dl id="top_box__address_detail">
                                     <dt>{{ form_label(form.address) }}</dt>
                                     <dd>
                                         <div id="top_box__zip" class="form-group form-inline input_zip {% if form.zip.zip01.vars.errors is not empty or form.zip.zip02.vars.errors is not empty %}has-error{% endif %}">{{ form_widget(form.zip) }}</div>
@@ -75,7 +75,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             {{ form_errors(form.address) }}
                                         </div>
                                     </dd>
-                                </dl>
+                                </dl> #}
                                 <dl id="top_box__tel">
                                     <dt>{{ form_label(form.tel) }}</dt>
                                     <dd>
@@ -88,12 +88,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <dl id="top_box__email">
                                     <dt>{{ form_label(form.email) }}</dt>
                                     <dd>
-                                        <div class="form-group">
-                                            {{ form_widget(form.email) }}
-                                            {{ form_errors(form.email) }}
+                                        {% for emailField in form.email %}
+                                        <div class="form-group {% if emailField.vars.errors is not empty %}has-error{% endif %}">
+                                            {{ form_widget(emailField) }}
+                                            {{ form_errors(emailField) }}
                                         </div>
+                                        {% endfor %}
                                     </dd>
                                 </dl>
+                               
                                 <dl id="top_box__contents">
                                     <dt>{{ form_label(form.contents) }}</dt>
                                     <dd>
@@ -103,7 +106,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         </div>
                                     </dd>
                                 </dl>
+
+                                <dl id="top_box__contents">
+                                    <dt>{{ form_label(form.type) }}</dt>
+                                    <dd>
+                                        <div class="column">
+                                            {{ form_widget(form.type) }}
+                                            {{ form_errors(form.type) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+
                             </div>
+
                             <input id="top_box__hidden_mode" type="hidden" name="mode" value="confirm">
                             {% for f in form %}
                                 {% if f.vars.name matches '[^plg*]' %}

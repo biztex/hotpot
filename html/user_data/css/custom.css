@@ -377,6 +377,10 @@ header .header .header__right .topheader .search img {
     }
 }
 
+.has-error .form-control:focus {
+    background: white;
+}
+
 header .header .header__right .topheader .phone a {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2033,4 +2037,70 @@ div.table ol li,
 
 #top_box__confirm_button {
     margin-top: 30px;
+}
+
+#freearea {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 24px;
+    line-height: 2;
+}
+
+#freearea .free_content {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#shopping_confirm .column {
+    margin-top: 25px;
+}
+
+#shopping_confirm .column h3 {
+    padding-top: 35px;
+}
+
+.btn-sm:hover {
+    color: #333;
+}
+
+#form1 {
+    margin-top: 10px;
+}
+
+.column.is-edit>p input,
+.customer-edit.customer-email input,
+.customer-edit.customer-company_name input {
+    padding: 10px;
+    color: #333;
+}
+
+.customer-edit.customer-pref {
+    display: block;
+}
+
+.column.is-edit>p input {
+    padding: 10px;
+    color: #333;
+    width: auto;
+    width: 100px;
+    margin: 10px 0;
+}
+
+.customer-edit.customer-email input,
+.customer-edit.customer-company_name input {
+    width: auto;
+    margin: 10px 0;
+    color: #333;
+}
+
+@media screen and (max-width: 500px) {
+    #freearea {
+        padding: 25px;
+        font-size: 18px;
+    }
+}
+
+.btn_group {
+    margin-top: 50px;
 }

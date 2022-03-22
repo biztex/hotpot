@@ -56,21 +56,33 @@ class ContactType extends AbstractType
                 'required' => false,
             ))
             ->add('tel', 'tel', array(
-                'required' => false,
+                'required' => true,
             ))
-            ->add('email', 'email', array(
+            ->add('email', 'repeated', array(
                 'required' => true,
                 'constraints' => array(
                     new Assert\NotBlank(),
                     new Assert\Email(array('strict' => true)),
                 ),
             ))
+            ->add('type', 'choice', array(
+                'label'     => '問い合わせ種類',
+                'choices'   => array('1' => '購入前商品について', 
+                                    '2' => '購入後商品について',
+                                    '3' => 'キャンセル・返品について',
+                                    '4' => '支払いについて',
+                                    '5' => '配送について',
+                                    '6' => 'その他'),
+                'required'  => true,
+            ))
+        
             ->add('contents', 'textarea', array(
                 'help' => 'form.contact.contents.help',
                 'constraints' => array(
                     new Assert\NotBlank(),
                 ),
-            ));
+            ))
+            ->addEventSubscriber(new \Eccube\Event\FormEventSubscriber());
     }
 
     /**

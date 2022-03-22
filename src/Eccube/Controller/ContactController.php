@@ -40,6 +40,7 @@ class ContactController
      */
     public function index(Application $app, Request $request)
     {
+
         $builder = $app['form.factory']->createBuilder('contact');
 
         if ($app->isGranted('ROLE_USER')) {

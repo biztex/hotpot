@@ -43,6 +43,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ■住所　　：{% if data.pref.name is defined %} {{ data.pref.name }}{% endif %}{{ data.addr01 }}{{ data.addr02 }}
 ■電話番号：{{ data.tel01 }} - {{ data.tel02 }} - {{ data.tel03 }}
 ■メールアドレス：{{ data.email }}
+■種類　　：{% if data.type == "1" %}購入前商品について{% elseif data.type == "2" %}購入後商品について{% elseif data.type == "3" %}キャンセル・返品について{% elseif data.type == "4" %}支払いについて{% elseif data.type == "5" %}配送について{% elseif data.type == "6" %}その他{% endif %}
 ■お問い合わせの内容
 
 {{ data.contents }}

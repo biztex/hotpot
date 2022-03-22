@@ -66,6 +66,7 @@ class EntryType extends AbstractType
             ))
             ->add('fax', 'tel', array(
                 'required' => false,
+                
             ))
             ->add('email', 'repeated_email')
             ->add('password', 'repeated_password')

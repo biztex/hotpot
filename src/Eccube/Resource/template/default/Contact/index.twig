@@ -97,15 +97,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                     </dd>
                                 </dl>
                                
-                                <dl id="top_box__contents">
-                                    <dt>{{ form_label(form.contents) }}</dt>
-                                    <dd>
-                                        <div class="column">
-                                            {{ form_widget(form.contents) }}
-                                            {{ form_errors(form.contents) }}
-                                        </div>
-                                    </dd>
-                                </dl>
+                               
 
                                 <dl id="top_box__contents">
                                     <dt>{{ form_label(form.type) }}</dt>
@@ -113,6 +105,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                         <div class="column">
                                             {{ form_widget(form.type) }}
                                             {{ form_errors(form.type) }}
+                                        </div>
+                                    </dd>
+                                </dl>
+
+                                 <dl id="top_box__contents">
+                                    <dt>{{ form_label(form.contents) }}</dt>
+                                    <dd>
+                                        <div class="column">
+                                            {{ form_widget(form.contents) }}
+                                            {{ form_errors(form.contents) }}
                                         </div>
                                     </dd>
                                 </dl>

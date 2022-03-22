@@ -58,13 +58,7 @@ class ContactType extends AbstractType
             ->add('tel', 'tel', array(
                 'required' => true,
             ))
-            ->add('email', 'repeated', array(
-                'required' => true,
-                'constraints' => array(
-                    new Assert\NotBlank(),
-                    new Assert\Email(array('strict' => true)),
-                ),
-            ))
+            ->add('email', 'repeated_email')
             ->add('type', 'choice', array(
                 'label'     => '問い合わせ種類',
                 'choices'   => array('1' => '購入前商品について', 

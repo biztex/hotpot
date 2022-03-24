@@ -314,15 +314,7 @@ $(function() {
                         </div>
                     </div>
                     <h2 class="heading02">お問い合わせ欄</h2>
-                    <div id="contact_message" class="column">
-                        <div>{{ form_label(form.email) }}</div>
-                        {% for emailField in form.email %}
-                        <div class="form-group {% if emailField.vars.errors is not empty %}has-error{% endif %}">
-                            {{ form_widget(emailField) }}
-                            {{ form_errors(emailField) }}
-                        </div>
-                        {% endfor %}
-                    </div>
+                   
                     <div id="contact_message" class="column">
                         {{ form_widget(form.message, {'attr': {'placeholder': '日付のご希望や、ご贈答などによる納品書不要のご連絡、領収書同封希望など、ご要望がございましたら、こちらにご入力ください（3000文字まで）', 'rows': '6'}}) }}
                         {{ form_errors(form.message) }}

@@ -53,7 +53,7 @@ class ShoppingType extends AbstractType
                     new Assert\NotBlank(),
                 ),
             ))
-            ->add('email', 'repeated_email')
+         
             ->add('message', 'textarea', array(
                 'required' => false,
                 'data' => $message,
